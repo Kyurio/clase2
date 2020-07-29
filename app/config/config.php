@@ -8,7 +8,7 @@
     //rutas de la aplicacion
     define('RUTA_APP', dirname(dirname(__FILE__)));
     //ruta url, cambia la ruta donde esta alojado lap app ejem: http://localhost:8018/Multiweb/
-    define('RUTA_URL', 'http://localhost/Aleria/');
+    define('RUTA_URL', 'http://localhost/aleria_php/');
     //ruta de guardado de imagese
 
     //nombre de la aplicacin

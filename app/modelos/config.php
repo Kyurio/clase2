@@ -140,8 +140,8 @@ class config{
       }
       // datos limpios
       $Llaves =  ltrim($Llaves, ',');
-      $Valores = ltrim($Valores, ',');
-
+      $Valores = ltrim(" ' ".$Valores." ' ", ',');
+      echo $Valores;
       //inserta los valores
       $this->bd->query("INSERT INTO :tabla ($Llaves) VALUES ($Valores)");
       $this->bd->bind(':tabla', $tabla);

@@ -26,21 +26,19 @@ class pages extends routes{
   public function Insert(){
 
 
-    //if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-      //$data = json_decode(file_get_contents("php://input"), true);
-      //$consulta = $data['consultaRecibida'];
-
-
+      $data = json_decode(file_get_contents("php://input"), true);
+      
       $datos = array('ulreich','kimmich','Lampard','inmobile');
       $columnas = array('columna1', 'columna2', 'columna3', 'columan4');
+
       $insert = $this->ConfigModelo->insert("juanchis", $columnas ,$datos);
 
-
-
-
-      echo $insert;
-    //}
+    }else {
+      $datos = "";
+      $columnas = "";
+    }
 
   }
 
