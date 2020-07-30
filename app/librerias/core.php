@@ -3,7 +3,7 @@
 class core{
   //parametros inciales
   protected $controladorActual = 'pages';
-  protected $metodoActual = 'home';
+  protected $metodoActual = 'index';
   protected $parametros= [];
   //constructor
   public function __construct(){

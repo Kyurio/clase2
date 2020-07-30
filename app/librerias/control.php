@@ -18,7 +18,7 @@ class control{
       require_once '../app/vistas/' . $vista . '.php';
     }else{
       //no existe
-      header('Location: /aleria_php/pages/error/404');
+      redireccionar('pages/error/404');
     }
   }
 }

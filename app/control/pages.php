@@ -12,21 +12,7 @@ class pages extends routes{
 
   }
 
-
-  public function Logout(){
-
-    if($this->SessionModelo->out()){
-      echo json_encode(true);
-    }else {
-      echo json_encode(false);
-    }
-
-  }
-
   public function Ejemplo(){
-
-
-
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
@@ -52,6 +38,15 @@ class pages extends routes{
 
   }
 
+  public function Logout(){
+
+    if($this->SessionModelo->out()){
+      echo json_encode(true);
+    }else {
+      echo json_encode(false);
+    }
+
+  }
 
 }//end class
 ?>

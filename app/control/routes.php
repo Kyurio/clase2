@@ -9,7 +9,7 @@ class routes extends control{
   }
 
   // abre el constructor principal de la app
-  public function home(){
+  public function index(){
 
     $this->vista('pages/constructor');
 
