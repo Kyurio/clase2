@@ -5,7 +5,15 @@
 
   <div class="container">
 
-      <h1>error 500</h1>
+    <div class="mt-5 mb-5 py-5 mx-5 text-center">
+
+      <h1>ERROR 500</h1>
+      <p>Problemas con el servidor.</p>
+      <br>
+      <a href="<?php echo RUTA_URL ?>pages/index">Home</a>
+
+    </div>
+
 
   </div>
 

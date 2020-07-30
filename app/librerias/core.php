@@ -3,7 +3,7 @@
 class core{
   //parametros inciales
   protected $controladorActual = 'pages';
-  protected $metodoActual = 'index';
+  protected $metodoActual = 'home';
   protected $parametros= [];
   //constructor
   public function __construct(){
@@ -16,15 +16,13 @@ class core{
     $url = $this->getUrl();
     //print_r($this->getUrl());
 
-    //busca en el controlador si el archivo existe
+    //valida si el archivo existe ....lo busca su existe
     if(file_exists('../app/control/' .ucwords($url[0]).'.php')){
       //si existe se configura como contralodr por defecto
       $this->controladorActual = ucwords($url[0]);
       //noconfigurar
       unset($url[0]);
     }
-
-    //requiere el controlador
     require_once '../app/control/'. $this->controladorActual . '.php';
     $this->controladorActual = new $this->controladorActual;
     //requiere el metodo indice 1

@@ -10,13 +10,16 @@ class config{
   /*----------------------------------------------------------------------------
   consultas select
   ----------------------------------------------------------------------------*/
-  public function select($option, $tabla, $condicion, $filtro, $count, $groupby){
+  public function select($option, $tabla, $condicion = null, $filtro = null, $count = null, $groupby = null){
     try{
       //reemplazar por un case;
       switch ($option) {
 
         case "filtro":
         $this->bd->query("SELECT * FROM $tabla WHERE $condicion = $filtro");
+        $this->bd->bind(':tabla', $tabla);
+        $this->bd->bind(':condicion', $condicion);
+        $this->bd->bind(':filtro', $filtro);
         return $this->bd->registros();
         break;
 
@@ -64,26 +67,42 @@ class config{
   /*----------------------------------------------------------------------------
   consultas updates
   ----------------------------------------------------------------------------*/
-  public function update($option, $tabla, $ColumnaActualiza, $valor, $Filtro, $ValorFiltrado){
+  public function update($tabla, $columnas, $values, $filtro){
+
     try {
 
-      switch ($option) {
+      // largo de las arrays
+      $Llaves ="";
+      $Valores ="";
 
-        case "NoWhere":
-        $this->bd->query("UPDATE $tabla SET $ColumnaActualiza = $valor");
-        return $this->bd->execute();
-        break;
+      $columas_length = count($columnas);
+      $values_length = count($values);
 
-        case "Where":
-        $this->bd->query("UPDATE $tabla SET $ColumnaActualiza = $valor WHERE $Filtro = $ValorFiltrado");
-        return $this->bd->execute();
-        break;
-
-        default:
-        echo "default";
-        break;
+      // recorre las llaves a insertar
+      for ($i=0; $i < $columas_length; $i++) {
+        $Llaves = $Llaves.", ".$columnas[$i];
       }
 
+      // recorre los valores de llave
+      for ($e=0; $e < $values_length; $e++) {
+        $Valores = $Valores.", '". $values[$e]."'";
+      }
+      // datos limpios
+      $Llaves =  substr($Llaves, 1);
+      $Valores = substr($Valores, 1);
+
+      //inserta los valores
+      $this->bd->query("UPDATE $tabla  SET ($Llaves) VALUES ($Valores)");
+      $this->bd->bind(':tabla', $tabla);
+      $this->bd->bind(':Llaves', $Llaves);
+      $this->bd->bind(':Valores', $Valores);
+
+      //ejecutar consulta
+      if($this->bd->execute()){
+        return json_encode(true);
+      }else{
+        return json_encode(false);
+      }
 
 
     } catch (\Exception $e){
@@ -123,6 +142,7 @@ class config{
     try {
 
       // largo de las arrays
+      trim($tabla);
       $Llaves ="";
       $Valores ="";
 
@@ -136,30 +156,28 @@ class config{
 
       // recorre los valores de llave
       for ($e=0; $e < $values_length; $e++) {
-        $Valores = $Valores.", ". $values[$e];
+        $Valores = $Valores.", '". $values[$e]."'";
       }
       // datos limpios
-      $Llaves =  ltrim($Llaves, ',');
-      $Valores = ltrim(" ' ".$Valores." ' ", ',');
-      echo $Valores;
+      $Llaves =  ltrim($Llaves, 1);
+      $Valores = ltrim($Valores, 1);
+
       //inserta los valores
-      $this->bd->query("INSERT INTO :tabla ($Llaves) VALUES ($Valores)");
+      $this->bd->query("INSERT INTO $tabla ($Llaves) VALUES ($Valores)");
       $this->bd->bind(':tabla', $tabla);
+      $this->bd->bind(':Llaves', $Llaves);
+      $this->bd->bind(':Valores', $Valores);
 
       //ejecutar consulta
       if($this->bd->execute()){
-
         return json_encode(true);
-
       }else{
-
         return json_encode(false);
-
       }
 
     }catch (\Exception $e) {
 
-      die("error 500 ".$e);
+      die($e);
 
     }
   }

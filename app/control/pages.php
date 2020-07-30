@@ -23,21 +23,31 @@ class pages extends routes{
 
   }
 
-  public function Insert(){
+  public function Ejemplo(){
+
+
 
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
       $data = json_decode(file_get_contents("php://input"), true);
-      
-      $datos = array('ulreich','kimmich','Lampard','inmobile');
-      $columnas = array('columna1', 'columna2', 'columna3', 'columan4');
-
-      $insert = $this->ConfigModelo->insert("juanchis", $columnas ,$datos);
+      $columnas = array('pregunta', 'respuesta');
+      $datos = array('ulreich','kimmich');
+      $insert = $this->ConfigModelo->insert("pregunta", $columnas ,$datos);
 
     }else {
       $datos = "";
       $columnas = "";
+    }
+
+  }
+
+  public function Select(){
+
+    if($product = $this->ConfigModelo->select('select', 'pregunta')){
+      echo json_encode($product);
+    }else {
+      echo json_encode("producto no encontrado");
     }
 
   }

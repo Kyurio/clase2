@@ -7,8 +7,8 @@
 
     <div class="mt-5 mb-5 py-5 mx-5 text-center">
 
-      <h1>ERROR 404</h1>
-      <p>Archivo no encontrado</p>
+      <h1>ERROR 403</h1>
+      <p>Acceso denegado</p>
       <br>
       <a href="<?php echo RUTA_URL ?>pages/index">Home</a>
 

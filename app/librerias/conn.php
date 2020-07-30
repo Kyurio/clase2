@@ -22,7 +22,6 @@ class conn{
     );
     // CREA INSTANCIA DE EL PDO
     try {
-      //code...
       $this->dbh = new PDO($dsn, $this->usuario,$this->password,$opciones);
       //traduse el resultado a latino
       $this->dbh->exec('set names utf8');
@@ -33,7 +32,7 @@ class conn{
     }
   }
 
-  //consultas sql
+  //consultas sql preparada
   public function query($sql){
     $this->stmt = $this->dbh->prepare($sql);
   }
