@@ -4,7 +4,6 @@ include (RUTA_APP."/control/routes.php");
 
 class pages extends routes{
 
-
   public function __construct(){
     //configuracion incial
     $this->ConfigModelo = $this->modelo('config');
@@ -12,31 +11,13 @@ class pages extends routes{
 
   }
 
-  public function Ejemplo(){
+  public function test(){
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-
-      $data = json_decode(file_get_contents("php://input"), true);
-      $columnas = array('pregunta', 'respuesta');
-      $datos = array('ulreich','kimmich');
-      $insert = $this->ConfigModelo->insert("pregunta", $columnas ,$datos);
-
-    }else {
-      $datos = "";
-      $columnas = "";
-    }
-
+    $notification =  array('title' => "dasdasd", 'description' => "sasdasasdasdasdsadasd123123", 'type' => "success", 'button' => "ok");
+    notification($notification);
   }
 
-  public function Select(){
 
-    if($product = $this->ConfigModelo->select('select', 'pregunta')){
-      echo json_encode($product);
-    }else {
-      echo json_encode("producto no encontrado");
-    }
-
-  }
 
   public function Logout(){
 

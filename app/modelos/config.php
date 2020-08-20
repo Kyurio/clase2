@@ -12,7 +12,15 @@ class config{
   ----------------------------------------------------------------------------*/
   public function select($option, $tabla, $condicion = null, $filtro = null, $count = null, $groupby = null){
     try{
-      //reemplazar por un case;
+      
+      trim($option);
+      trim($tabla);
+      trim($condicion);
+      trim($filtro);
+      trim($count);
+      trim($groupby);
+
+
       switch ($option) {
 
         case "filtro":

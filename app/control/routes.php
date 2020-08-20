@@ -46,6 +46,13 @@ class routes extends control{
 
   }
 
+  //grabar simulacion
+  public function Simular(){
+
+
+
+
+  }
 
 }//end class
 ?>
