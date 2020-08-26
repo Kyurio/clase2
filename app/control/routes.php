@@ -47,11 +47,9 @@ class routes extends control{
   }
 
   //grabar simulacion
-  public function Simular(){
+  public function test(){
 
-
-
-
+    $this->vista('pages/test');
   }
 
 }//end class
