@@ -11,6 +11,7 @@ class pages extends routes{
 
   }
 
+
   public function Logout(){
 
     if($this->SessionModelo->out()){

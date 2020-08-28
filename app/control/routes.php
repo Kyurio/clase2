@@ -11,8 +11,7 @@ class routes extends control{
   // abre el constructor principal de la app
   public function index(){
 
-    $this->vista('pages/constructor');
-
+    $this->vista('pages/inicio');
   }
 
   // redirecciona a la pagina de error

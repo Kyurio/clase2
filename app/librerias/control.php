@@ -16,6 +16,7 @@ class control{
     if(file_exists('../app/vistas/' . $vista . '.php')){
       //existe
       require_once '../app/vistas/' . $vista . '.php';
+
     }else{
       //no existe
       redireccionar('pages/error/404');

@@ -12,6 +12,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
   <!-- core css framework aleria -->
   <link rel="stylesheet" href="<?php echo RUTA_URL ?>public/css/aleria.css">
+  <!-- css alertify -->
+  <link rel="stylesheet" href="<?php echo RUTA_URL ?>public/css/assets/alertify/alertify.min.css">
+
 
   <title><?php echo NOMBRE_SITIO; ?></title>
 </head>
