@@ -13,6 +13,7 @@
 
     //nombre de la aplicacin
     define('NOMBRE_SITIO', 'Aleria');
+    define('ESLOGAN', 'eslogan de la app');
 
 
 ?>

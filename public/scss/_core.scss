@@ -1,6 +1,86 @@
+.navbar{
+  background-color: $colorPrincipal !important;
+  padding: 15px;
+  a{
+    color: $white !important;
+  }
+}
+
+.social{
+
+  color: $black;
+
+  .social-facebook:hover{
+
+    color: $colorSecundario !important;
+
+  }
+  .social-twitter:hover{
+
+    color: $colorSecundario !important;
+
+  }
+  .social-google-plus:hover{
+
+    color: $colorSecundario !important;
+
+  }
+  .social-linkedin:hover{
+
+    color: $colorSecundario !important;
+
+  }
+  .social-instagram:hover{
+
+    color: $colorSecundario !important;
+
+  }
+  .social-pinterest:hover{
+
+    color: $colorSecundario !important;
+
+  }
+}
+// clases especificas
 .mt-10{
   padding-top: 10rem!important;
 }
+
 .mb-10{
   padding-top: 10rem!important;
+}
+
+//scroll mouse
+.next-section {
+  position: absolute;
+  bottom: 77px;
+  left: 50%;
+  width: 31px;
+  height: 46px;
+  border: 2px solid #fff;
+  border-top-color: rgb(255, 255, 255);
+  border-right-color: rgb(255, 255, 255);
+  border-bottom-color: rgb(255, 255, 255);
+  border-left-color: rgb(255, 255, 255);
+  display: block;
+  z-index: 1;
+  border-radius: 15px;
+  padding: 3px 12px;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transition: all .25s ease;
+  transition: all .25s ease;
+
+  .divider {
+    width: 2px;
+    height: 10px;
+    background: #fff;
+    display: block;
+    position: relative;
+    -webkit-animation: mymove infinite;
+    animation: mymove infinite;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+  }
 }

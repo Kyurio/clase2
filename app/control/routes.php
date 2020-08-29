@@ -14,6 +14,25 @@ class routes extends control{
     $this->vista('pages/inicio');
   }
 
+  // abre la pagina de conectos
+  public function contacto(){
+
+    $this->vista('pages/contacto');
+  }
+
+  // abre la intranet
+  public function intranet(){
+
+    $this->vista('pages/intranet');
+  }
+
+
+  public function productos(){
+
+    $this->vista('pages/intranet');
+  }
+
+
   // redirecciona a la pagina de error
   public function error($err = null){
 
@@ -45,7 +64,7 @@ class routes extends control{
 
   }
 
-  //grabar simulacion
+  // grabar simulacion
   public function test(){
 
     $this->vista('pages/test');

@@ -17,9 +17,11 @@
 
 
   <title><?php echo NOMBRE_SITIO; ?></title>
+  
 </head>
 <body>
 
-  <!-- navbar -->
+  <!--  componente navbar -->
   <?php require_once RUTA_APP . '/helpers/components/navbar.php' ?>
-  <!-- end navbar -->
+  <!-- end  componente navbar -->
+  <div class="container">

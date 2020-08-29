@@ -1,4 +1,9 @@
+<!-- end container -->
+</div>
 
+<!--  componente navbar -->
+<?php require_once RUTA_APP . '/helpers/components/footer.php' ?>
+<!-- end  componente navbar -->
 
 <!-- popper -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

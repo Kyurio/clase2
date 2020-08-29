@@ -1,3 +1,5 @@
+// funciones de alerta de alerify
+
 function Notifier(Msg, type){
 
   var notification = alertify.notify(Msg, type);
@@ -34,3 +36,6 @@ function Error(){
   "<a href='javascript:alertify.errorAlert(\"Another error\");'> Click here </a>");
 
 }
+
+
+// funciones de alerta de sweetalert

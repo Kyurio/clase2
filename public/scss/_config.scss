@@ -1,3 +1,15 @@
 // configuraciones de estylos y fuentes del framework
-$fuente: "";
-$font-family: "";
+@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
+$font-family: 'Cutive Mono', monospace;
+
+//colores
+$colorPrincipal: #313848;
+$colorSecundario: #313848;
+$colorContraste: #735372;
+$colorContrastSecundario: #8f758e;
+// colores texto
+$black: #33313b;
+$white: #ffff;
+//
+$backgroundColor: #f6f5f5;
+$constrarteBackGround: "";
