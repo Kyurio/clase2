@@ -22,16 +22,23 @@ class routes extends control{
 
   // abre la intranet
   public function intranet(){
+    $countMails = $this->CounterMail();
+    $mailsReibicidos = $this->SelectMail();
 
-    $this->vista('pages/intranet');
+    $datos = [
+
+      'cantidad_de_mails' => $countMails,
+      'correos_recibidos' => $mailsReibicidos,
+
+    ];
+
+    $this->vista('pages/intranet', $datos);
   }
-
 
   public function productos(){
 
-    $this->vista('pages/intranet');
+    $this->vista('pages/productos');
   }
-
 
   // redirecciona a la pagina de error
   public function error($err = null){

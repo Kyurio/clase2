@@ -1,6 +1,7 @@
 <!-- end container -->
 </div>
 
+<hr class="mt-5 container">
 <!--  componente navbar -->
 <?php require_once RUTA_APP . '/helpers/components/footer.php' ?>
 <!-- end  componente navbar -->

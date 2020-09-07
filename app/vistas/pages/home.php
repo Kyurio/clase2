@@ -44,4 +44,10 @@
   <!-- end  componente jumbotron -->
 
 
+
+  <!--  componente jumbotron -->
+  <?php require_once RUTA_APP . '/helpers/components/galeria.php' ?>
+  <!-- end  componente jumbotron -->
+
+
 </div>

@@ -3,7 +3,7 @@
     define('DB_HOST','localhost');
     define('DB_USUARIO','root');
     define('DB_PASSWORD','');
-    define('DB_NOMBRE','bjorn');
+    define('DB_NOMBRE','aleria');
 
     //rutas de la aplicacion
     define('RUTA_APP', dirname(dirname(__FILE__)));

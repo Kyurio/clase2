@@ -14,10 +14,12 @@
   <link rel="stylesheet" href="<?php echo RUTA_URL ?>public/css/aleria.css">
   <!-- css alertify -->
   <link rel="stylesheet" href="<?php echo RUTA_URL ?>public/css/assets/alertify/alertify.min.css">
+  <!-- core css framework aleria -->
+  <link rel="stylesheet" href="<?php echo RUTA_URL ?>public/css/style.css">
 
 
   <title><?php echo NOMBRE_SITIO; ?></title>
-  
+
 </head>
 <body>
 

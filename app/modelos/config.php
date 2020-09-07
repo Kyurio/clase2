@@ -12,7 +12,7 @@ class config{
   ----------------------------------------------------------------------------*/
   public function select($option, $tabla, $condicion = null, $filtro = null, $count = null, $groupby = null){
     try{
-      
+
       trim($option);
       trim($tabla);
       trim($condicion);
@@ -151,6 +151,7 @@ class config{
 
       // largo de las arrays
       trim($tabla);
+
       $Llaves ="";
       $Valores ="";
 
@@ -167,14 +168,11 @@ class config{
         $Valores = $Valores.", '". $values[$e]."'";
       }
       // datos limpios
-      $Llaves =  ltrim($Llaves, 1);
-      $Valores = ltrim($Valores, 1);
+      $Llaves =  substr($Llaves, 1);
+      $Valores = substr($Valores, 1);
 
       //inserta los valores
       $this->bd->query("INSERT INTO $tabla ($Llaves) VALUES ($Valores)");
-      $this->bd->bind(':tabla', $tabla);
-      $this->bd->bind(':Llaves', $Llaves);
-      $this->bd->bind(':Valores', $Valores);
 
       //ejecutar consulta
       if($this->bd->execute()){
