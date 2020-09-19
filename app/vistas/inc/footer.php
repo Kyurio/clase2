@@ -22,5 +22,10 @@
 <script src="<?php echo RUTA_URL ?>public/js/assets/alertifyjs/alertify.min.js"></script>
 <!-- componentes notifiaciones -->
 <script src="<?php echo RUTA_URL ?>public/js/components/alerts.js"></script>
+<!-- componentes funciones -->
+<script src="<?php echo RUTA_URL ?>public/js/components/functions.js"></script>
+<!-- functions vuejs -->
+<script src="<?php echo RUTA_URL ?>public/js/vue/app.js"></script>
+
 </body>
 </html>

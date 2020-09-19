@@ -24,6 +24,7 @@ require_once RUTA_APP . '/vistas/inc/header.php';
       <!-- contenido de dashboard -->
 
     </div>
+
     <div class="tab-pane fade" id="products" role="tabpanel" aria-labelledby="products-tab">
 
       <!-- contenido de productos -->
@@ -33,7 +34,7 @@ require_once RUTA_APP . '/vistas/inc/header.php';
             <h6 class="font-weight-bold">productos</h6>
 
             <div class="mt-1 mb-1 py-1">
-              <button type="button" class="btn btn-sm btn-info" title="editar" name="button"><i class="fas fa-plus"></i></button>
+              <button type="button" data-toggle="modal" data-target="#AgregarModal" class="btn btn-sm btn-info" title="editar" name="button"><i class="fas fa-plus"></i></button>
             </div>
 
             <br>
@@ -48,20 +49,92 @@ require_once RUTA_APP . '/vistas/inc/header.php';
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>zapatos</td>
-                  <td>activo</td>
-                  <td>500</td>
-                  <td>
-                    <button type="button" class="btn btn-sm btn-primary" title="editar" name="button"><i class="fas fa-pen"></i></button>
-                    <button type="button" class="btn btn-sm btn-danger" title="eliminar" name="button"><i class="fas fa-trash"></i></button>
-                    <button type="button" class="btn btn-sm btn-info" title="descativar" name="button"><i class="fas fa-ban"></i></button>
-                    <button type="button" class="btn btn-sm btn-success" title="activar" name="button"><i class="fas fa-check"></i></button>
-                  </td>
-                </tr>
+                <?php foreach ($datos['productos'] as $item): ?>
+                  <tr>
+                    <th scope="row"><?php echo $item->cantidad ?></th>
+                    <td><?php echo $item->nombre ?></td>
+                    <td><?php echo $item->estado ?></td>
+                    <td><?php echo $item->precio ?></td>
+                    <td>
+                      <button type="button" data-toggle="modal" data-target="#EditarModal<?php echo $item->id_producto?>" class="btn btn-sm btn-primary" title="editar" name="button"><i class="fas fa-pen"></i></button>
+
+                      <!-- edit agregar -->
+                      <div class="modal fade" id="EditarModal<?php echo $item->id_producto ?>" tabindex="-1" aria-labelledby="EditarModal" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="Edit">Editar: </h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form class="" action="<?php echo  RUTA_URL ?>pages/EditarProducto" method="post">
+                                <div class="form-group">
+                                  <label for="NombreProducto">Nombre Producto</label>
+                                  <input type="text" class="form-control" id="NombreProducto" value="<?php echo $item->nombre ?>" aria-describedby="NombreProducto" placeholder="Nombre Producto">
+                                </div>
+                                <div class="form-group">
+                                  <label for="NombreProducto">Cantidad</label>
+                                  <input type="number" min="1" class="form-control" id="CantidadProducto" name="CantidadProducto" value="<?php echo $item->cantidad ?>" aria-describedby="CantidadProducto" placeholder="Cantidad Producto">
+                                </div>
+                                <div class="form-group">
+                                  <label for="PrecioProducto">Precio</label>
+                                  <input type="number" min="1" class="form-control" id="PrecioProducto" name="PrecioProducto" value="<?php echo $item->precio ?>" aria-describedby="PrecioProducto" placeholder="Precio Producto">
+                                </div>
+                              </form>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cerrar</button>
+                              <button type="button" class="btn btn-sm btn-primary">Grabar</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- end modal editar -->
+
+                      <button type="button" class="btn btn-sm btn-danger" title="eliminar" name="button"><i class="fas fa-trash"></i></button>
+                      <button type="button" class="btn btn-sm btn-info" title="descativar" name="button"><i class="fas fa-ban"></i></button>
+                      <button type="button" class="btn btn-sm btn-success" title="activar" name="button"><i class="fas fa-check"></i></button>
+                    </td>
+                  </tr>
+                <?php endforeach; ?>
               </tbody>
             </table>
+
+
+            <!-- agregar agregar -->
+            <div class="modal fade" id="AgregarModal" tabindex="-1" aria-labelledby="AgregarModal" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="Edit">Agregar Producto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form class="" action="<?php echo  RUTA_URL ?>pages/CrearProducto" method="post">
+                      <div class="form-group">
+                        <label for="NombreProducto">Nombre Producto</label>
+                        <input type="text" class="form-control" id="NombreProducto" name="NombreProducto" aria-describedby="NombreProducto" placeholder="Nombre Producto">
+                      </div>
+                      <div class="form-group">
+                        <label for="NombreProducto">Cantidad</label>
+                        <input type="number" min="1" class="form-control" id="CantidadProducto" name="CantidadProductos" aria-describedby="CantidadProducto" placeholder="Cantidad Producto">
+                      </div>
+                      <div class="form-group">
+                        <label for="PrecioProducto">Precio</label>
+                        <input type="number" min="1" class="form-control" id="PrecioProducto"  name="PrecioProducto" aria-describedby="PrecioProducto" placeholder="Precio Producto">
+                      </div>
+                      <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cerrar</button>
+                      <button type="submit" class="btn btn-sm btn-primary">Grabar</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end modal agregar -->
 
           </div>
         </div>
@@ -69,6 +142,7 @@ require_once RUTA_APP . '/vistas/inc/header.php';
       <!-- contenido de productos -->
 
     </div>
+
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 
       <!-- contenido de correo -->
@@ -79,7 +153,7 @@ require_once RUTA_APP . '/vistas/inc/header.php';
 
             <?php foreach ($datos['correos_recibidos'] as $item): ?>
               <p>
-                <a data-toggle="collapse" href="#Mensjae<?php echo $item->Id ?>" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <a data-toggle="collapse" @click="Leido('<?php echo $item->Id ?>')" href="#Mensjae<?php echo $item->Id ?>" role="button" aria-expanded="false" aria-controls="collapseExample">
                   <small>Correo de:</small> <?php echo $item->nombre ?>
                 </a>
               </p>
@@ -92,6 +166,7 @@ require_once RUTA_APP . '/vistas/inc/header.php';
                   <?php echo $item->mensaje ?>
                 </p>
 
+
               </div>
             <?php endforeach; ?>
 
@@ -101,6 +176,7 @@ require_once RUTA_APP . '/vistas/inc/header.php';
       </div>
       <!-- contenido de correo -->
     </div>
+
     <div class="tab-pane fade" id="estats" role="tabpanel" aria-labelledby="stats-tab">
 
       <!-- contenido de estadisticas -->
@@ -128,6 +204,7 @@ require_once RUTA_APP . '/vistas/inc/header.php';
 
 
     </div>
+
     <div class="tab-pane fade" id="clientes" role="tabpanel" aria-labelledby="clientes-tab">
 
       <!-- contenido de configuracion -->
@@ -144,6 +221,7 @@ require_once RUTA_APP . '/vistas/inc/header.php';
       </div>
 
     </div>
+
     <div class="tab-pane fade" id="config" role="tabpanel" aria-labelledby="config-tab">
 
       <!-- contenido de configuracion -->

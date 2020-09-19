@@ -11,7 +11,39 @@ class pages extends routes{
 
   }
 
+  public function CrearProducto(){
 
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+
+      $NombreProducto = trim($_POST['NombreProducto']);
+      $CantidadProducto = trim($_POST['CantidadProductos']);
+      $PrecioProducto = trim($_POST['PrecioProducto']);
+      $Estado = 1;
+      $id_empresa =1;
+
+      $columnas = array("id_empresa", "cantidad", "precio", "nombre", "estado");
+      $datos =  array($id_empresa, $CantidadProducto, $PrecioProducto, $NombreProducto, $Estado);
+
+      //ejecyta la insercion
+      if($this->ConfigModelo->insert('productos', $columnas, $datos)){
+
+        $_SESSION["success"]=true;
+        redireccionar('pages/intranet');
+
+      }else{
+        echo false;
+      }
+
+    }else{
+
+      $columnas = "";
+      $datos = "";
+
+    }
+  }
+
+  //registra un mail
   public function enviar(){
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -63,6 +95,38 @@ class pages extends routes{
     return $CantidadMails;
 
   }
+
+  //marca el mensaje como recibido y cambia de estado
+  public function MensajeLeido(){
+
+    $data = json_decode(file_get_contents("php://input"), true);
+    $id = $data['id_mensaje'];
+
+    if($this->ConfigModelo->update('Where', 'Mensajes', 'estado', '1', 'Id', $id)){
+      echo json_encode(true);
+    }else{
+      echo json_encode(false);
+    }
+
+
+  }
+
+  //seleccionar productos
+  public function SelectProductos(){
+
+    $CantidadMails = ($this->ConfigModelo->select('select', 'productos', '', '', '', ''));
+    return $CantidadMails;
+
+  }
+
+  //eliminar productos
+  public function DeleteProductos($id){
+
+    $CantidadMails = ($this->ConfigModelo->delete('productos', 'id_producto', '', '', '', ''));
+    return $CantidadMails;
+
+  }
+
 
   public function Logout(){
 

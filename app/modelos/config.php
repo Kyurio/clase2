@@ -75,41 +75,25 @@ class config{
   /*----------------------------------------------------------------------------
   consultas updates
   ----------------------------------------------------------------------------*/
-  public function update($tabla, $columnas, $values, $filtro){
-
+  public function update($option, $tabla, $ColumnaActualiza, $valor, $Filtro, $ValorFiltrado){
+  
     try {
 
-      // largo de las arrays
-      $Llaves ="";
-      $Valores ="";
+      switch ($option) {
 
-      $columas_length = count($columnas);
-      $values_length = count($values);
+        case "NoWhere":
+        $this->bd->query("UPDATE $tabla SET $ColumnaActualiza = $valor");
+        return $this->bd->execute();
+        break;
 
-      // recorre las llaves a insertar
-      for ($i=0; $i < $columas_length; $i++) {
-        $Llaves = $Llaves.", ".$columnas[$i];
-      }
+        case "Where":
+        $this->bd->query("UPDATE $tabla SET $ColumnaActualiza = $valor WHERE $Filtro = $ValorFiltrado");
+        return $this->bd->execute();
+        break;
 
-      // recorre los valores de llave
-      for ($e=0; $e < $values_length; $e++) {
-        $Valores = $Valores.", '". $values[$e]."'";
-      }
-      // datos limpios
-      $Llaves =  substr($Llaves, 1);
-      $Valores = substr($Valores, 1);
-
-      //inserta los valores
-      $this->bd->query("UPDATE $tabla  SET ($Llaves) VALUES ($Valores)");
-      $this->bd->bind(':tabla', $tabla);
-      $this->bd->bind(':Llaves', $Llaves);
-      $this->bd->bind(':Valores', $Valores);
-
-      //ejecutar consulta
-      if($this->bd->execute()){
-        return json_encode(true);
-      }else{
-        return json_encode(false);
+        default:
+        echo "default";
+        break;
       }
 
 

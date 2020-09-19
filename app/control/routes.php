@@ -22,13 +22,16 @@ class routes extends control{
 
   // abre la intranet
   public function intranet(){
+
     $countMails = $this->CounterMail();
     $mailsReibicidos = $this->SelectMail();
+    $productos = $this->SelectProductos();
 
     $datos = [
 
       'cantidad_de_mails' => $countMails,
       'correos_recibidos' => $mailsReibicidos,
+      'productos' => $productos
 
     ];
 
