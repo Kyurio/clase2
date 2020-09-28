@@ -3,8 +3,8 @@
 class core{
   //parametros inciales
   protected $controladorActual = 'pages';
-  protected $metodoActual = 'index';
-  protected $parametros= [];
+  protected $metodoActual = 'main';
+  protected $parametros = [];
   //constructor
   public function __construct(){
     /*
@@ -14,7 +14,7 @@ class core{
     */
     //requerir el controladro indice 0
     $url = $this->getUrl();
-    //print_r($this->getUrl());
+    print_r($this->getUrl());
 
     //valida si el archivo existe ....lo busca su existe
     if(file_exists('../app/control/' .ucwords($url[0]).'.php')){

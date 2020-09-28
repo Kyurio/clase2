@@ -4,43 +4,13 @@ class routes extends control{
 
   public function __construct(){
 
-    $this->SessionModelo = $this->modelo('session');
 
   }
 
   // abre el constructor principal de la app
-  public function index(){
+  public function main(){
 
-    $this->vista('pages/inicio');
-  }
-
-  // abre la pagina de conectos
-  public function contacto(){
-
-    $this->vista('pages/contacto');
-  }
-
-  // abre la intranet
-  public function intranet(){
-
-    $countMails = $this->CounterMail();
-    $mailsReibicidos = $this->SelectMail();
-    $productos = $this->SelectProductos();
-
-    $datos = [
-
-      'cantidad_de_mails' => $countMails,
-      'correos_recibidos' => $mailsReibicidos,
-      'productos' => $productos
-
-    ];
-
-    $this->vista('pages/intranet', $datos);
-  }
-
-  public function productos(){
-
-    $this->vista('pages/productos');
+    $this->vista('pages/main');
   }
 
   // redirecciona a la pagina de error
@@ -74,11 +44,6 @@ class routes extends control{
 
   }
 
-  // grabar simulacion
-  public function test(){
-
-    $this->vista('pages/test');
-  }
 
 }//end class
 ?>

@@ -25,7 +25,4 @@
 </head>
 <body>
 
-  <!--  componente navbar -->
-  <?php require_once RUTA_APP . '/helpers/components/navbar.php' ?>
-  <!-- end  componente navbar -->
-  <div class="container">
+  
