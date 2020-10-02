@@ -76,7 +76,7 @@ class config{
   consultas updates
   ----------------------------------------------------------------------------*/
   public function update($option, $tabla, $ColumnaActualiza, $valor, $Filtro, $ValorFiltrado){
-  
+
     try {
 
       switch ($option) {
